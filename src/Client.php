@@ -141,7 +141,7 @@ class Client implements ClientInterface
 	private function request($host, $path, $data)
 	{
 		return $this->guzzleClient->post(
-			sprintf( 'https://%s/%s', $host, $path ),
+			sprintf( $this->proxyApiUrl ?: 'https://%s%s', $host, $path ),
 			[
 				'headers' => [
 					'Authorization' => sprintf('key=%s', $this->apiKey),
